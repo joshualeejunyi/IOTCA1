@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+   <head>
+		<title>Atmosphere History</title>
+   </head>
+
+   <body>
+		<h1>Josh Smart Safe Room</h1>
+		<form id="routeform" onSubmit="route();">
+			<input type="date" name="date" id="date"/>
+			<input type="button" id="submit" value="Submit"/>
+		</form>
+		<a href="/">Go Back</a>
+	</body>
+	<script>
+		var submit = document.getElementById('submit');
+		submit.addEventListener('click', function() {
+			//console.log("clicked")
+			var date = document.getElementById('date').value;
+			console.log(date);
+			var url = window.location.href.concat(date);
+			window.location = url;
+			console.log(url);
+		})
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+   <head>
+		<title>Face Scan</title>
+   </head>
+
+   <body>
+		<h1>Face Scan</h1>
+		<form id="routeform" onSubmit="route();">
+			Enter the User ID:<input type="number" name="id" id="id"/>
+			<br>
+			Enter the Username:<input type="text" name="username" id="username"/>
+			<br>
+			<input type="button" id="submit" value="Submit"/>
+		</form>
+		<a href="/">Go Back</a>
+	</body>
+	<script>
+		var submit = document.getElementById('submit');
+		submit.addEventListener('click', function() {
+			//console.log("clicked")
+			var userid = document.getElementById('id').value;
+			var username = document.getElementById('username').value;
+			var url = window.location.href.concat(userid).concat('/').concat(username);
+			window.location = url;
+			console.log(url);
+		})
+</script>
+</html>

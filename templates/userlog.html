@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<head>
+		<title>User Entry Logs</title>
+	</head>
+	<body>
+		<div>
+			<table border="1">
+				<tr>
+					<th>User</th>
+					<th>Date/Time Accessed</th>
+			{%- for username, datetime in data %}
+				<tr>
+					<td>{{ username }}</td>
+					<td>{{ datetime }}</td>
+				</tr>
+			{%- endfor %}
+			</table>
+			<a href="/">Go Back</a>
+		</div>
+	</body>
+</html>

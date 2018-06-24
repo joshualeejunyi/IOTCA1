@@ -1,0 +1,58 @@
+<!doctype html>
+<head>
+    <title>Smart Safe Room Atmosphere</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			google.load('visualization', '1', {'packages':['corechart']});
+			google.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = new google.visualization.DataTable();	   
+				data.addColumn('string', 'Date');
+				data.addColumn('number', 'Temperature');
+				data.addColumn('number', 'Humidity');
+				data.addRows([
+					{%- for datetimevalue, temperature, humidity in data %}
+						['{{ datetimevalue }}', {{ temperature }}, {{ humidity }}],
+					{%- endfor %}
+				]);
+				var chart = new google.visualization.LineChart(
+					document.getElementById('chart_div'));
+					chart.draw(data, {legend: 'none', vAxis: {baseline: 0},
+					colors: ['#00C7CE', '#2200BC']});
+			}
+		</script>
+		<script>
+			$(document).ready(function () {
+				setInterval(function () {
+				location.reload();
+				//drawChart();
+				}, 3000);
+			});
+		</script>
+
+</head>
+<body>
+	<div id="content">
+		<h1>Atmosphere Values Captured</h1>
+		<div id="chart_div"></div>
+		<div>
+			<table border="1">
+				<tr>
+					<th>Date/Time</th>
+					<th>Temperature (C)</th>
+					<th>Humidity (%)</th>
+			
+			{%- for datetimevalue, temperature, humidity in data %}
+				<tr>
+					<td>{{ datetimevalue }}</td>
+					<td>{{ temperature }}</td>
+					<td>{{ humidity }}</td>
+				</tr>
+			{%- endfor %}
+			</table>
+		</div>
+		<a href="/">Go Back</a>
+	</div>
+</body>
+</html>

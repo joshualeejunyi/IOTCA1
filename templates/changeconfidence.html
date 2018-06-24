@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+   <head>
+		<title>Change Face Unlock Confidence</title>
+   </head>
+
+   <body>
+		<h3>Change Face Unlock Confidence: </h3>
+		<p>Please Enter a Value (0-100)</p>
+		<form id="routeform" onSubmit="route();">
+			<input type="number" name="number" id="number"/>
+			<input type="button" id="submit" value="Submit"/>
+		</form>
+		<a href="/">Go Back</a>
+	</body>
+	<script>
+		var submit = document.getElementById('submit');
+		submit.addEventListener('click', function() {
+			console.log("clicked")
+			var number = document.getElementById('number').value;
+			var url = window.location.href.concat(number);
+			window.location = url;
+			console.log(url);
+		})
+</script>
+</html>

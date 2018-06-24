@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+	<head>
+		<title>Failed Entry Logs</title>
+	</head>
+	<body>
+		<div>
+			<h3>Failed Entry Logs</h3>
+			<p>All Failed Entries will be logged here.</p>
+			<table border="1">
+				<tr>
+					<th>Date/Time</th>
+					<th>Image Capture</th>
+			{%- for datetime, pictureid in data %}
+				<tr>
+					<td>{{ datetime }}</td><td><img src="../../captures/'{{ pictureid }}.jpg'" alt="{{ pictureid }}"></img></td>
+				</tr>
+			{%- endfor %}
+			</table>
+			<a href="/">Go Back</a>
+		</div>
+	</body>
+</html>
